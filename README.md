@@ -1,60 +1,55 @@
-# 💻 Laptop Price Prediction System
+# Social Media Safety & Harassment Prediction 🛡️📊
 
-An end-to-end Machine Learning project that predicts the market price of a laptop based on its hardware specifications and brand. This project features a comprehensive Exploratory Data Analysis (EDA), extensive benchmarking of 10 different regression algorithms, and a user-friendly Streamlit web application for real-time predictions.
+An end-to-end Data Science and Machine Learning project designed to analyze user behavior on social media and predict the likelihood of online harassment. This project combines comprehensive exploratory data analysis via Power BI dashboards with a predictive machine learning application deployed using Streamlit.
+
+### 🌐 Live Demo
+**Check out the live web application here:** [Social Media Harassment Prediction App](https://social-media-harassment-prediction-website.streamlit.app/)
 
 ---
 
 ## 🎯 Project Overview
 
-The laptop market is highly saturated with varying configurations, making it difficult for consumers to gauge fair pricing. This project solves that problem by leveraging machine learning to predict laptop prices based on key features like RAM, CPU, GPU, Weight, and Screen Resolution. 
-
-The project rigorously evaluated multiple models to find the most accurate predictor, ultimately deploying an **XGBoost Regressor** to power the backend of the interactive web app.
-
----
-
-## ✨ Key Highlights & Features
-
-* **Comprehensive EDA:** Uncovered hidden trends in the data through detailed visualizations, including:
-  * *Price vs. Operating System* trends.
-  * *Weight vs. Density* and *Weight vs. Price* correlations.
-  * The impact of premium features (Touchscreen, IPS panels) on overall cost.
-* **Extensive Model Benchmarking:** Built, tuned, and compared 10 different machine learning algorithms to ensure maximum predictive accuracy.
-* **Interactive UI:** A clean, intuitive Streamlit frontend allowing users to input custom configurations and instantly receive a predicted price in INR (₹).
+With the rapid increase in digital interactions, online safety is a critical concern. This project serves a dual purpose:
+1. **Descriptive Analytics:** Utilizing Power BI to uncover patterns regarding demographics, usage behavior, and exposure to inappropriate content.
+2. **Predictive Analytics:** An interactive web application that evaluates user inputs (such as privacy settings, platform usage, and demographic data) to classify their risk of experiencing online harassment.
 
 ---
 
-## 🧠 Methodology & Machine Learning Pipeline
+## ✨ Key Features
 
-### 1. Data Analysis & Preprocessing
-* Cleaned and formatted raw data (e.g., extracting numeric values from RAM and Memory columns).
-* Engineered new features such as PPI (Pixels Per Inch) from Screen Resolution.
-* Handled categorical variables (Brand, CPU Type, GPU Brand, OS) using techniques like One-Hot Encoding and Target Encoding.
+### 1. Power BI Dashboards (Descriptive BI)
+The project includes a robust suite of dashboards analyzing:
+* **Demographics and Usage Behavior:** Screen time, platform distribution (Facebook, Instagram, Twitter, etc.), and user demographics.
+* **Interactions with Unknown Users:** Frequencies of accepting stranger requests and sharing personal information.
+* **Exposure to Inappropriate Content:** Tracking encounters with offensive media and derogatory remarks.
 
-### 2. Model Selection & Benchmarking
-To find the best performing model, the following algorithms were tested:
-* Linear Regression
-* Ridge & Lasso Regression
-* K-Nearest Neighbors (KNN)
-* Decision Tree
-* Support Vector Regressor (SVR)
-* Random Forest
-* Gradient Boosting & AdaBoost
-* **XGBoost (Selected Champion Model)**
+### 2. Machine Learning Application (Predictive ML)
+An interactive frontend built with Streamlit (`app.py`) that acts as a risk assessment tool. 
+* **Target Variable Classification:** 
+    * 🟢 Not Harassed
+    * 🟡 Moderately Harassed
+    * 🔴 Highly Harassed
+* **Model Selection:** Evaluated multiple algorithms including Logistic Regression, Naive Bayes, and Support Vector Machines (SVM). **Random Forest** was selected as the final production model due to its superior accuracy and ability to handle non-linear behavioral data.
 
-*XGBoost was chosen as the final model due to its superior capability in handling complex, non-linear relationships and delivering the lowest prediction error.*
+---
 
-### 3. Deployment
-* Exported the trained XGBoost model and data transformation pipelines using `pickle`.
-* Built an interactive frontend using `Streamlit` (`app.py`) to accept user inputs and display predictions dynamically.
+## 🧠 Methodology & Pipeline
+
+1.  **Data Cleaning & Preprocessing:** Handled missing values, encoded categorical variables, and standardized numerical inputs.
+2.  **Exploratory Data Analysis (EDA):** Conducted in `eda.ipynb` to find correlations between screen time, age, and harassment frequency.
+3.  **Feature Engineering:** Selected the most impactful features contributing to online vulnerability.
+4.  **Model Training & Tuning:** Trained various classification models, optimizing hyperparameters for the Random Forest classifier.
+5.  **Serialization:** Exported the trained model (`final_model.pkl`) and data scaler (`scaler.pkl`) for deployment.
+6.  **Deployment:** Built a user-friendly form interface using Streamlit to accept real-time input and output instant risk predictions.
 
 ---
 
 ## 📂 Repository Structure
 
 ```text
-├── app.py                 # Streamlit application script for the frontend
-├── laptop_price_eda.ipynb # Jupyter Notebook containing Data Cleaning, EDA, and Model Training
-├── xgb_model.pkl          # Serialized XGBoost regression model
-├── pipeline.pkl           # Serialized data preprocessing pipeline
+├── app.py                 # Streamlit frontend application for ML predictions
+├── eda.ipynb              # Jupyter Notebook containing Data Cleaning and EDA
+├── final_model.pkl        # Serialized Random Forest classification model
+├── scaler.pkl             # Serialized scaler for feature normalization
 ├── requirements.txt       # Python dependencies required to run the project
 └── README.md              # Project documentation
